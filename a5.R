@@ -1,3 +1,6 @@
+#http://langcog.github.io/wordbankr/
+#http://langcog.github.io/wordbankr/#advanced-functionality-cross-linguistic-data
+
 
 library(dplyr)
 library(tidyr)
