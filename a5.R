@@ -128,3 +128,20 @@ animal_data <- get_instrument_data(language = "English (American)",
                                    form = "WS",
                                    items = animals$item_id,
                                    administrations = TRUE)
+people <- get_item_data(language = "English (American)", form = "WS") %>%
+  filter(category == "people")
+
+
+people_data <- get_instrument_data(language = "English (American)",
+                                   form = "WS",
+                                   items = people$item_id,
+                                   administrations = TRUE)
+
+mom <- get_item_data(language = "English (American)", form = "WS") %>%
+  filter(definition == "mommy*")
+
+
+mom_data <- get_instrument_data(language = "English (American)",
+                                   form = "WS",
+                                   items = mom$item_id,
+                                   administrations = TRUE)
