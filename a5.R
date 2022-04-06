@@ -110,6 +110,10 @@ library(tidyverse)
 
 english_ws<-get_administration_data(language = "English (American)", form = "WS")
 
+
+uk_english_ws<-get_administration_data(language = "English (British)", form = "WS")
+
+#write to csv
 write.csv(english_ws, file="englishws.csv",row.names = FALSE)
 
 
@@ -124,6 +128,8 @@ ggplot(data=english_ws)+geom_point(aes(age,production,color=hs_grad))+geom_smoot
 
 item_data<- get_item_data(language = "English (American)", form = "WS")
 
+brit_item_data<- get_item_data(language = "English (British)", form = "WS")
+
 animals <- get_item_data(language = "English (American)", form = "WS") %>%
   filter(category == "animals")
 
@@ -131,6 +137,15 @@ animal_data <- get_instrument_data(language = "English (American)",
                                    form = "WS",
                                    items = animals$item_id,
                                    administrations = TRUE)
+
+brit_animals <- get_item_data(language = "English (British)", form = "WS") %>%
+  filter(category == "animals")
+
+brit_animal_data <- get_instrument_data(language = "English (british)",
+                                   form = "WS",
+                                   items = brit_animals$item_id,
+                                   administrations = TRUE)
+
 people <- get_item_data(language = "English (American)", form = "WS") %>%
   filter(category == "people")
 
@@ -140,8 +155,8 @@ people_data <- get_instrument_data(language = "English (American)",
                                    items = people$item_id,
                                    administrations = TRUE)
 
-mom <- get_item_data(language = "English (American)", form = "WS") %>%
-  filter(definition == "mommy*")
+mom_dad <- get_item_data(language = "English (American)", form = "WS") %>%
+  filter(c(definition == "mommy*",definition=="daddy*"))
 
 
 mom_data <- get_instrument_data(language = "English (American)",
