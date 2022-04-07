@@ -110,9 +110,12 @@ library(tidyverse)
 
 english_ws<-get_administration_data(language = "English (American)" OR language="English (Australian)", form = "WS")
 
+all_data_ws<- get_administration_data(form="WS")
+write.csv(all_data_ws, file="all_data_ws.csv",row.names = FALSE)
 
 aus_english_ws<-get_administration_data(language = "English (Australian)", form = "WS")
 
+spanish_ws<-get_administration_data(language = "Spanish (European)", form = "WS")
 #write to csv
 write.csv(english_ws, file="englishws.csv",row.names = FALSE)
 
@@ -155,6 +158,15 @@ people_data <- get_instrument_data(language = "English (American)",
                                    items = people$item_id,
                                    administrations = TRUE)
 
+span_people <- get_item_data(language = "Spanish (European)", form = "WS") %>%
+  filter(category == "people")
+
+
+span_people_data <- get_instrument_data(language = "Spanish (European)",
+                                   form = "WS",
+                                   items = span_people$item_id,
+                                   administrations = TRUE)
+
 mom <- get_item_data(language = "English (American)", form = "WS") %>%
   filter(c(definition == "mommy*"))
 
@@ -163,5 +175,10 @@ mom_data <- get_instrument_data(language = "English (American)",
                                    form = "WS",
                                    items = mom$item_id,
                                    administrations = TRUE)
+
+all_item_ws <- get_item_data( form = "WS")
+
+
+
 
 ggplot(data=mom_data,aes(age,color=mom_ed))+geom_density()
