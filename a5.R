@@ -108,10 +108,10 @@ library(tidyverse)
 
 #https://mikabr.io/demo-vocab/momed.html
 
-english_ws<-get_administration_data(language = "English (American)", form = "WS")
+english_ws<-get_administration_data(language = "English (American)" OR language="English (Australian)", form = "WS")
 
 
-uk_english_ws<-get_administration_data(language = "English (British)", form = "WS")
+aus_english_ws<-get_administration_data(language = "English (Australian)", form = "WS")
 
 #write to csv
 write.csv(english_ws, file="englishws.csv",row.names = FALSE)
@@ -128,7 +128,7 @@ ggplot(data=english_ws)+geom_point(aes(age,production,color=hs_grad))+geom_smoot
 
 item_data<- get_item_data(language = "English (American)", form = "WS")
 
-brit_item_data<- get_item_data(language = "English (British)", form = "WS")
+aus_item_data<- get_item_data(language = "English (Australian)", form = "WS")
 
 animals <- get_item_data(language = "English (American)", form = "WS") %>%
   filter(category == "animals")
@@ -138,12 +138,12 @@ animal_data <- get_instrument_data(language = "English (American)",
                                    items = animals$item_id,
                                    administrations = TRUE)
 
-brit_animals <- get_item_data(language = "English (British)", form = "WS") %>%
+aus_animals <- get_item_data(language = "English (Australian)", form = "WS") %>%
   filter(category == "animals")
 
-brit_animal_data <- get_instrument_data(language = "English (british)",
+aus_animal_data <- get_instrument_data(language = "English (Australian)",
                                    form = "WS",
-                                   items = brit_animals$item_id,
+                                   items = aus_animals$item_id,
                                    administrations = TRUE)
 
 people <- get_item_data(language = "English (American)", form = "WS") %>%
@@ -155,8 +155,8 @@ people_data <- get_instrument_data(language = "English (American)",
                                    items = people$item_id,
                                    administrations = TRUE)
 
-mom_dad <- get_item_data(language = "English (American)", form = "WS") %>%
-  filter(c(definition == "mommy*",definition=="daddy*"))
+mom <- get_item_data(language = "English (American)", form = "WS") %>%
+  filter(c(definition == "mommy*"))
 
 
 mom_data <- get_instrument_data(language = "English (American)",
