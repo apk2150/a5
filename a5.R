@@ -176,9 +176,12 @@ mom_data <- get_instrument_data(language = "English (American)",
                                    items = mom$item_id,
                                    administrations = TRUE)
 
-all_item_ws <- get_item_data( form = "WS")
+all_item_ws <- get_item_data(form = "WS")
 
-
+all_item_data<- get_instrument_data(#language = NULL, # doesnt work
+                                      form = "WS",
+                                    items = all_item_ws$item_id,
+                                    administrations = TRUE)
 
 
 ggplot(data=mom_data,aes(age,color=mom_ed))+geom_density()
