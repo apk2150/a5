@@ -1,0 +1,3 @@
+ideas:
+
+bubble drifting chart
