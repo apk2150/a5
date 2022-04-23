@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <head>
-<script src="bubblechart.js"></script>
-<link href="style.css">
-<title>World Happiness Report</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>World Happiness Report</title>
 </head>
 <body>
 
     <h1>World Happiness Report</h1>
+
+
+    <!-- Bubble chart -->
+    <div class="buttons">
+        <ul id="bubblechartbuttons">
+            <li><button class="button bubble_select" value="logGDPPerCapita">GDP</button></li>
+            <li><button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button></li>
+            <li><button class="button bubble_select" value="socialSupport">Social Support</button></li>
+            <li><button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button></li>
+        </ul>
+    </div>
+
+    <div id="bubble"></div>
+    <div id="slider"></div>
+    <div id="bubblebar"></div>
+
+    <script type="text/javascript"  src="bubblechart.js"></script>
+
 </body>
+

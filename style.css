@@ -1,0 +1,31 @@
+.button {
+    width: 100px;
+    height: 40px;
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #F99E4F;
+}
+
+.button:hover {
+    width: 100px;
+    height: 40px;
+    margin: 10px 10px 10px 10px;
+    background-color: #F9ECE0;
+    border-radius: 10px;
+    border: 2px solid #F99E4F;
+    box-shadow: 2px 2px 2px #C2C2C2;
+}
+
+.buttons{
+    float: left;
+    width: 15%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+ul{
+    list-style-type: none;
+}
