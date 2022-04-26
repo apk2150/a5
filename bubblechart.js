@@ -86,7 +86,7 @@ d3.csv('countriesdata.csv', function(data){
         .attr("class", "tooltip")
         .style("background-color", "#E9D6F4")
         .style("width", "160px")
-        .style("height", "60px")
+        .style("height", "120px")
         .style("padding", "10px")
         .style("border-radius", "10px")
         .style("border", "5px solid #E4C9F4")
@@ -99,8 +99,12 @@ d3.csv('countriesdata.csv', function(data){
 		.style("stroke", "black")
         .style("opacity", 1);
 
-        var html  = d["countryName"] + "<br>" + "Happiness Score: " + formatValue(d["lifeLadder"]) 
-            + "<br>" + "GDP: " + formatValue(d["logGDPPerCapita"]) + "<br>" + "Year: " + d["year"];
+        var html  = "<div style='font-size:17px; margin-bottom:-10px;'><b>" + d["countryName"] + "</b> </div>" + "<br>" + 
+			"<div style='font-size:15px;'> <b>Happiness Score:</b> " + formatValue(d["lifeLadder"]) 
+            + "<br>" + "<b>GDP:</b> " + formatValue(d["logGDPPerCapita"]) + "<br>" + 
+			"<b>Life Expectancy:</b> " + formatValue(d["healthyLifeExpectancyAtBirth"]) + "<br>" +
+			"<b>Social Support:</b> " + formatValue(d["socialSupport"]) + "<br>" +
+			"<b>Freedom:</b> " + formatValue(d["freedomToMakeLifeChoices"]) + "</div>";
         tooltip.html(html)
 //            .style("left", (360) + "px")
 //            .style("top", (120) + "px")
@@ -153,11 +157,11 @@ d3.csv('countriesdata.csv', function(data){
     }
 
 
-	// function buildGraph(data){
+	function buildGraph(data){
 		var circles = svg3.selectAll('.circ')
 			.data(data)
 			.enter().append('circle').classed('circ', true)
-			.filter(function(d) { return d.year == year })
+			
 			.attr('r', 7)
 			.attr('cx', function(d){return xScale(d[selected_variable]); })
 			// .attr('cy', function(d){ return yScale(d.lifeLadder); })
@@ -205,64 +209,61 @@ d3.csv('countriesdata.csv', function(data){
 			return xScale(d[selected_variable])
 		}))
 
+		if(selected_variable == "logGDPPerCapita"){
+			d3.select("#explanation").text("GDP corresponds to how the country's economy affects the happiness of the citizens.")
+		}
+		else if(selected_variable == "healthyLifeExpectancyAtBirth"){
+			d3.select("#explanation").text("How Life Expentency has a correlation with happiness")
+		}
+		else if(selected_variable == "socialSupport"){
+			d3.select("#explanation").text("Does social support have an affect on happiness")
+		}
+		else if(selected_variable == "freedomToMakeLifeChoices"){
+			d3.select("#explanation").text("Is there a correlation between how much freedom a person gets and happiness")
+		}
+
 	})
-	// }
-	// buildGraph(data.filter(function(d) { return d.year == year }))
+	}
+	buildGraph(data.filter(function(d) { return d.year == year }))
 
-	// var timeSlider = d3.sliderHorizontal()
-    // .min(2008)
-    // .max(2020)
-    // .step(1)
-    // .width(700)
-    // .tickFormat(d3.format("d"))
-	// .default(2019)
-    // .on('onchange', val => {
-    //     year = +val;
-	// 	console.log(year)
+	var timeSlider = d3.sliderHorizontal()
+    .min(2008)
+    .max(2020)
+    .step(1)
+    .width(700)
+    .tickFormat(d3.format("d"))
+	.default(2019)
+    .on('onchange', val => {
+        year = +val;
+		console.log(year)
 
-		// svg3.selectAll('.circ')
-		// .data(data)
-		// .attr("class", "circ")
-        // .filter(function(d) { return d.year == year })
-		// .attr('r', 7)
-		// .attr('cx', function(d){return xScale(d[selected_variable]); })
-		// // .attr('cy', function(d){ return yScale(d.lifeLadder); })
-		// .attr("fill", function(d) { return scaleColor(d["lifeLadder"]); })
-        // .attr("opacity", 0.8)
-		// // .attr("stroke", "black")
-		// .attr("stroke-width", 0.5)
-		// .on('click', handleClick)
-		// .on('mouseover', highlight)
-        // .on("mousemove", tipMousemove)
-		// .on("mouseout", removeHighlight);
+		var noZeroes = filtered(year).filter(function(d) { return +d[selected_variable] !== 0 && d[selected_variable]; });
+        var minV = d3.min(noZeroes, d => +d[selected_variable]);
+        var maxV = d3.max(noZeroes, d => +d[selected_variable]);
+        console.log(minV, maxV)
 
-		// var noZeroes = filtered(year).filter(function(d) { return +d[selected_variable] !== 0 && d[selected_variable]; });
-        // var minV = d3.min(noZeroes, d => +d[selected_variable]);
-        // var maxV = d3.max(noZeroes, d => +d[selected_variable]);
-        // console.log(minV, maxV)
+        xScale.domain([minV, maxV])
 
-        // xScale.domain([minV, maxV])
-
-		// var newData = data.filter(function(d) { return d.year == year })
-        // // console.log(xScale.domain)
-		// // d3.selectAll(".circ").remove()
-		// // d3.selectAll(".circ")
-		// 	// .attr()
-		// buildGraph(newData)
+		var newData = data.filter(function(d) { return d.year == year })
+        // console.log(xScale.domain)
+		d3.selectAll(".circ").remove()
+		// d3.selectAll(".circ")
+			// .attr()
+		buildGraph(newData)
 
 		// simulation.force('x', d3.forceX(function(d){
 		// 	return xScale(d[selected_variable])
 		// }))
-	// })
+	})
 
-	// var gslider = d3.select("div#slider").append("svg")
-	// .attr("class", "slider")
-	// .attr("width", 1000)
-	// .attr("height", 100)
-	// .append("g")
-	// .attr("transform", "translate(30,10)");
+	var gslider = d3.select("div#slider").append("svg")
+	.attr("class", "slider")
+	.attr("width", 1000)
+	.attr("height", 100)
+	.append("g")
+	.attr("transform", "translate(30,10)");
 
-	// gslider.call(timeSlider);
+	gslider.call(timeSlider);
 
 })
 

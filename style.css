@@ -20,10 +20,25 @@
 .buttons{
     float: left;
     width: 15%;
-    height: 300px;
+    height: 350px;
     display: flex;
     justify-content: center;
     overflow: hidden;
+}
+
+.moreinfo{
+    float: right;
+    /* width: 15%; */
+    height: 300px;
+    /* display: flex;
+    justify-content: center;
+    overflow: hidden; */
+    /* margin-left: 60%; */
+}
+
+.bubble{
+    float: left;
+    /* display: flex; */
 }
 
 ul{

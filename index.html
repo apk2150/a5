@@ -13,18 +13,33 @@
 
 
     <!-- Bubble chart -->
-    <div class="buttons">
-        <ul id="bubblechartbuttons">
-            <li><button class="button bubble_select" value="logGDPPerCapita">GDP</button></li>
-            <li><button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button></li>
-            <li><button class="button bubble_select" value="socialSupport">Social Support</button></li>
-            <li><button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button></li>
-        </ul>
-    </div>
+    <div class="bubblechart">
+        <div id="explanation">
+            GDP corresponds to how the country's economy affects the happiness of the citizens.
+        </div>
+        <div class="buttons">
+            <ul id="bubblechartbuttons">
+                <li><button class="button bubble_select" value="logGDPPerCapita">GDP</button></li>
+                <li><button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button></li>
+                <li><button class="button bubble_select" value="socialSupport">Social Support</button></li>
+                <li><button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button></li>
+                <li><button class="button bubble_select" value="perceptionsOfCorruption">Perceptions of Corruption</button></li>
+            </ul>
+        </div>
 
-    <div id="bubble"></div>
-    <div id="slider"></div>
-    <div id="bubblebar"></div>
+        <div id="bubble"></div>
+        <!-- <div class="moreinfo">
+            <h3 id="country"></h3>
+            <p id="happiness"></p>
+            <p id="GDP">GDP</p>
+            <p id="lifeexpentency"></p>
+            <p id="socialsupport"></p>
+            <p id="freedom"></p>
+        </div> -->
+        <div id="slider"></div>
+        <div id="bubblebar"></div>
+
+    </div>
 
     <script type="text/javascript"  src="bubblechart.js"></script>
 
