@@ -1,26 +1,26 @@
-const width = 700,
-  height = 700,
-  radius = Math.min(width, height) / 2;
+const sunWidth = 600,
+  sunHeight = 600,
+  radius = Math.min(sunWidth, sunHeight) / 2;
 
-const formatDec = d3.format(".2f")
+const sunFormatDec = d3.format(".2f")
 
-var scaleColor = d3.scaleSequential()
+var sunScaleColor = d3.scaleSequential()
   .domain([2, 8.5])
   .interpolator(d3.interpolateInferno);;
 
-var partition = d3.partition(); // subdivides layers
+var sunPartition = d3.partition(); // subdivides layers
 
-var x = d3.scaleLinear() // continuous scale. preserves proportional differences
+var sunX = d3.scaleLinear() // continuous scale. preserves proportional differences
     .range([0, 2 * Math.PI]); // setting range from 0 to 2 * circumference of a circle
 
-var y = d3.scaleSqrt() // continuous power scale 
+var sunY = d3.scaleSqrt() // continuous power scale 
     .range([0, radius]); // setting range from 0 to radius
 
-var arc = d3.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x0))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x1))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y0)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y1)); });
+var sunArc = d3.arc()
+    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sunX(d.x0))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sunX(d.x1))); })
+    .innerRadius(function(d) { return Math.max(0, sunY(d.y0)); })
+    .outerRadius(function(d) { return Math.max(0, sunY(d.y1)); });
 
 
 // create a tooltip
@@ -43,30 +43,30 @@ d3.json('countries.json', function(error, root) {
 });
 
 function render(data) {
-    var root = d3.hierarchy(data).sum(function (d) { return d.size});
+    var sunRoot = d3.hierarchy(data).sum(function (d) { return d.size});
     
-    root.data.children.forEach(function(d){
+    sunRoot.data.children.forEach(function(d){
         d.enabled = true;
       })
 
 // define SVG element
-var svg = d3.select("#div_template").append("svg")
-    .attr("width", width) // set width
-    .attr("height", height) // set height
+var sunSvg = d3.select("#div_template").append("svg")
+    .attr("width", sunWidth) // set width
+    .attr("height", sunHeight) // set height
   .append("g") // append g element
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+    .attr("transform", "translate(" + sunWidth / 2 + "," + (sunHeight / 2) + ")");
 
-var path = svg.selectAll("path")
-    .data(partition(root).descendants()) // path for each descendant
+var sunPath = sunSvg.selectAll("path")
+    .data(sunPartition(sunRoot).descendants()) // path for each descendant
     .enter().append("path")
-        .attr("d", arc) // draw arcs
+        .attr("d", sunArc) // draw arcs
         .attr("class", "path")
         .style('stroke', '#fff')
         .style('fill', function (d) {
             if (d.data.id == "COUNTRIES") {
                return "#FFF"; 
             }
-            return scaleColor(d.data.score); 
+            return sunScaleColor(d.data.score); 
             })
     .on("click", click)
     .on('mouseover', function(d) {
@@ -90,7 +90,7 @@ var path = svg.selectAll("path")
   .on('mousemove', function(d) { // when mouse moves 
         if (d.data.id != "COUNTRIES") {              
         tooltip
-            .html(d.data.id + "<br>Happiness Score: " + formatDec(d.data.score))
+            .html(d.data.id + "<br>Happiness Score: " + sunFormatDec(d.data.score))
             .style("left", (d3.event.pageX + 10) + "px") //position the tooltip on mouse cursor
             .style("top", (d3.event.pageY - 15) + "px") //position the tooltip on mouse cursor
         }
@@ -98,41 +98,34 @@ var path = svg.selectAll("path")
 
   function click(d) {
     
-    svg.transition()
+    sunSvg.transition()
         .duration(750) // duration of transition
         .tween("scale", function() {
-          var xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
-              yd = d3.interpolate(y.domain(), [d.y0, 1]),
-              yr = d3.interpolate(y.range(), [d.y0 ? (80) : 0, radius]);
-          return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
+          var sunXd = d3.interpolate(sunX.domain(), [d.x0, d.x1]),
+              sunYd = d3.interpolate(sunY.domain(), [d.y0, 1]),
+              sunYr = d3.interpolate(sunY.range(), [d.y0 ? (80) : 0, radius]);
+          return function(t) { sunX.domain(xd(t)); sunX.domain(yd(t)).range(yr(t)); };
         })
       .selectAll("path")
-        .attrTween("d", function(d) { return function() { return arc(d); }; });
+        .attrTween("d", function(d) { return function() { return sunArc(d); }; });
   }  
 
-d3.select(self.frameElement).style("height", height + "px");
+d3.select(self.frameElement).style("height", sunHeight + "px");
 
 }
   
 // redraw on disabled category
 function redraw(d) {
-    console.log("function redraw");
     
-    svg.transition()
+    sunSvg.transition()
         .duration(750)
         .tween("scale", function() {
-          var xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
-              yd = d3.interpolate(y.domain(), [d.y0, 1]),
-              yr = d3.interpolate(y.range(), [d.y0 ? (radius/2) : 0, radius]);
-          return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
+          var sunXd = d3.interpolate(sunX.domain(), [d.x0, d.x1]),
+              sunYd = d3.interpolate(sunY.domain(), [d.y0, 1]),
+              sunYr = d3.interpolate(sunY.range(), [d.y0 ? (radius/2) : 0, radius]);
+          return function(t) { sunX.domain(xd(t)); sunY.domain(yd(t)).range(yr(t)); };
         })
       .selectAll("path")
-        .attrTween("d", function(d) { return function() { return arc(d); }; });
+        .attrTween("d", function(d) { return function() { return sunArc(d); }; });
     
   }
-
-// find ancestors
-function getRootmostAncestorByWhileLoop(node) {
-    while (node.depth > 1) node = node.parent;
-    return node;
-}
