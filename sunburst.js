@@ -1,6 +1,6 @@
-const width = 700,
-  height = 700,
-  radius = Math.min(width, height) / 2;
+const sunWidth = 600,
+  sunHeight = 600,
+  radius = Math.min(sunWidth, sunHeight) / 2;
 
 const formatDec = d3.format(".2f")
 
@@ -51,10 +51,10 @@ function render(data) {
 
 // define SVG element
 var svg = d3.select("#div_template").append("svg")
-    .attr("width", width) // set width
-    .attr("height", height) // set height
+    .attr("width", sunWidth) // set width
+    .attr("height", sunHeight) // set height
   .append("g") // append g element
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+    .attr("transform", "translate(" + sunWidth / 2 + "," + (sunHeight / 2) + ")");
 
 var path = svg.selectAll("path")
     .data(partition(root).descendants()) // path for each descendant
@@ -110,7 +110,7 @@ var path = svg.selectAll("path")
         .attrTween("d", function(d) { return function() { return arc(d); }; });
   }  
 
-d3.select(self.frameElement).style("height", height + "px");
+d3.select(self.frameElement).style("height", sunHeight + "px");
 
 }
   

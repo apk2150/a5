@@ -1,4 +1,4 @@
-Country name,year,Life Ladder,Log GDP per capita,Social support,Healthy life expectancy at birth,Freedom to make life choices,Generosity,Perceptions of corruption,Positive affect,Negative affect,change from previous year,change from previous year,
+countryName,year,lifeLadder,logGDPPerCapita,socialSupport,healthyLifeExpectancyAtBirth,freedomToMakeLifeChoices,generosity,perceptionsOfCorruption,positiveAffect,negativeAffect,changeFromPreviousYear,changeFromPreviousYear
 Afghanistan,2008,3.724,7.370,0.451,50.800,0.718,0.168,0.882,0.518,0.258,,,0
 Afghanistan,2009,4.402,7.540,0.552,51.200,0.679,0.190,0.850,0.584,0.237,0.678,0.678188324,0.678188324
 Afghanistan,2010,4.758,7.647,0.539,51.600,0.600,0.121,0.707,0.618,0.275,0.357,0.3566026688,0.3566026688

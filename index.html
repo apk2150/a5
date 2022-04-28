@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <head>
-<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>World Happiness Report</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>World Happiness Report</title>
 </head>
 <body>
-    <div id="div_template"></div>
-</body>
-<script type="text/javascript" src="sunburst.js"></script>
 
+    <h1>World Happiness Report</h1>
+
+    <!-- Sunburst chart -->   
+    <div id="div_template"></div>
+
+    <!-- Bubble chart -->
+    <div class="bubblechart">
+        <div id="explanation" class="info">
+            GDP corresponds to how the country's economy affects the happiness of the citizens.
+        </div>
+        <div id="bubblelegend"></div>
+        <div class="buttons">
+            <ul id="bubblechartbuttons">
+                <li><button class="button bubble_select" value="logGDPPerCapita">GDP</button></li>
+                <li><button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button></li>
+                <li><button class="button bubble_select" value="socialSupport">Social Support</button></li>
+                <li><button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button></li>
+                <li><button class="button bubble_select" value="perceptionsOfCorruption">Perceptions of Corruption</button></li>
+            </ul>
+        </div>
+
+        <div id="bubble"></div>
+        <div id="left">Low GDP</div>
+        <div id="right">High GDP</div>
+        <!-- <div class="moreinfo">
+            <h3 id="country"></h3>
+            <p id="happiness"></p>
+            <p id="GDP">GDP</p>
+            <p id="lifeexpentency"></p>
+            <p id="socialsupport"></p>
+            <p id="freedom"></p>
+        </div> -->
+        <div id="slider"></div>
+
+        <div class="info">Go to 2020 on the slider and click on any country to see the break down of the contributors of the happiness score!</div>
+        
+        <div id="bubblebar"></div>
+
+    </div>
+    <script type="text/javascript" src="sunburst.js"></script>
+    <script type="text/javascript"  src="bubblechart.js"></script>
+
+</body>
