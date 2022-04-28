@@ -20,14 +20,14 @@
 
 
 
-var width = 700;
-var height = 300;
-var padding = 100;
+var bubblewidth = 700;
+var bubbleheight = 300;
+var bubblepadding = 100;
 
 
-var svg3 = d3.select('div#bubble').append('svg')
-			.attr('width', width)
-			.attr('height', height)
+var bubblesvg = d3.select('div#bubble').append('svg')
+			.attr('width', bubblewidth)
+			.attr('height', bubbleheight)
 
 
 // formatting the data displayed in the tooltip
@@ -58,49 +58,15 @@ var selected_variable = "logGDPPerCapita";
 
 d3.csv('countriesdata.csv', function(data){
 	// define some useful scales
-	var radiusScale = d3.scaleLinear()
-		.domain(d3.extent(data, function(d) { return 5 }))
-		.range([7, 30]);
 
-	var scaleColor = d3.scaleSequential()
+	var bubbleColor = d3.scaleSequential()
   		.domain([2, 8.5])
   		.interpolator(d3.interpolateInferno);
 
-	var xScale = d3.scaleLinear()
+	var bubblexScale = d3.scaleLinear()
         .domain([6.966, 11.648])
-		.rangeRound([padding, width - padding])
+		.rangeRound([bubblepadding, bubblewidth - bubblepadding])
 
-    // Add Y axis
-    // var yScale = d3.scaleLinear()
-    //     .domain([5,8])
-    //     .range([ height - padding, padding]);
-
-	// a function to highlight points when clicked
-
-    // var createBarChart = function (d) {
-
-    //     var barchart = d3.select('#bubblebar').append('svg')
-    //         .attr('width', width)
-    //         .attr('height', height);
-
-        
-    //     var bar = barchart.selectAll('.circ')
-    //     .data(filtered())
-    //     .enter().append('circle').classed('circ', true)
-    //     // .filter(function(d) { return d.year == '2019' })
-    //     .attr('r', 7)
-    //     .attr('cx', function(d){ return xScale(d[selected_variable]); })
-    //     // .attr('cy', function(d){ return yScale(d.lifeLadder); })
-    //     .attr("fill", function(d) { return scaleColor(d.lifeLadder); })
-    //     .attr("opacity", 0.8)
-    //     // .attr("stroke", "black")
-    //     .attr("stroke-width", 0.5)
-    //     .on('click', handleClick)
-    //     .on('mouseover', highlight)
-    //     .on("mousemove", tipMousemove)
-    //     .on("mouseout", removeHighlight);
-
-    // }
 
 	var handleClick = function (d) {
 
@@ -115,17 +81,11 @@ d3.csv('countriesdata.csv', function(data){
 			}
 		}
 
-		
-			
-		// d3.select("#country").text("Country:" + d.country);
-		// d3.select("#happiness").text("Rank:" + parseInt(d.index + 1));
-		// d3.select("#index").text(selected_variable + ":" + d[selected_variable]);
-
 	};
 
-    var tooltip = d3.select("body").append("div")
+    var bubbleTooltip = d3.select("body").append("div")
         .style("position", "absolute")
-        .attr("class", "tooltip")
+        .attr("class", "bubbleTooltip")
         .style("background-color", "#E9D6F4")
         .style("width", "160px")
         .style("height", "120px")
@@ -147,7 +107,7 @@ d3.csv('countriesdata.csv', function(data){
 			"<b>Life Expectancy:</b> " + formatValue(d["healthyLifeExpectancyAtBirth"]) + "<br>" +
 			"<b>Social Support:</b> " + formatValue(d["socialSupport"]) + "<br>" +
 			"<b>Freedom:</b> " + formatValue(d["freedomToMakeLifeChoices"]) + "</div>";
-        tooltip.html(html)
+		bubbleTooltip.html(html)
 //            .style("left", (360) + "px")
 //            .style("top", (120) + "px")
                 .style("left", (d3.event.pageX + 20) + "px") //position the tooltip on mouse cursor
@@ -160,7 +120,7 @@ d3.csv('countriesdata.csv', function(data){
 	};
 
     var tipMousemove = function(d) { 
-        d3.select('.tooltip')
+        d3.select('.bubbleTooltip')
         .style('left', (d3.event.pageX + 20) + 'px') //position the tooltip on mouse cursor
         .style('top', (d3.event.pageY + 10) + 'px') //position the tooltip on mouse cursor
 	};
@@ -178,7 +138,7 @@ d3.csv('countriesdata.csv', function(data){
             .style("opacity", 0.8);
 		}
 
-        tooltip.transition()
+        bubbleTooltip.transition()
           .duration(300) // ms
           .style("opacity", 0); // don't care about position!
 
@@ -202,14 +162,14 @@ d3.csv('countriesdata.csv', function(data){
 
 
 	function buildGraph(data){
-		var circles = svg3.selectAll('.circ')
+		var circles = bubblesvg.selectAll('.circ')
 			.data(data)
 			.enter().append('circle').classed('circ', true)
 			
 			.attr('r', 7)
-			.attr('cx', function(d){return xScale(d[selected_variable]); })
+			.attr('cx', function(d){return bubblexScale(d[selected_variable]); })
 			// .attr('cy', function(d){ return yScale(d.lifeLadder); })
-			.attr("fill", function(d) { return scaleColor(d["lifeLadder"]); })
+			.attr("fill", function(d) { return bubbleColor(d["lifeLadder"]); })
 			.attr("opacity", 0.8)
 			// .attr("stroke", "black")
 			.attr("stroke-width", 0.5)
@@ -221,10 +181,10 @@ d3.csv('countriesdata.csv', function(data){
 	
 	var simulation = d3.forceSimulation(filtered(year))
 		.force('x', d3.forceX(function(d){
-				return xScale(d[selected_variable])
+				return bubblexScale(d[selected_variable])
 			})
 		)
-		.force('y', d3.forceY(height/2).strength(0.03))
+		.force('y', d3.forceY(bubbleheight/2).strength(0.03))
 		.force('collide', d3.forceCollide(function(d) { return 10; }).strength(0.9))
 		.alpha(0.01)
 		.alphaTarget(0.3)
@@ -246,35 +206,35 @@ d3.csv('countriesdata.csv', function(data){
         var maxV = d3.max(noZeroes, d => +d[selected_variable]);
         console.log(minV, maxV)
 
-        xScale.domain([minV, maxV])
+        bubblexScale.domain([minV, maxV])
         // console.log(xScale.domain)
 
 		simulation.force('x', d3.forceX(function(d){
-			return xScale(d[selected_variable])
+			return bubblexScale(d[selected_variable])
 		}))
 
 		if(selected_variable == "logGDPPerCapita"){
-			d3.select("#explanation").text("GDP corresponds to how the country's economy affects the happiness of the citizens.")
+			d3.select("#explanation").text("How does the country's economy contribute to happiness?")
 			d3.select("#left").text("Low GDP")
 			d3.select("#right").text("High GDP")
 		}
 		else if(selected_variable == "healthyLifeExpectancyAtBirth"){
-			d3.select("#explanation").text("How Life Expentency has a correlation with happiness")
+			d3.select("#explanation").text("How does the life expentancy of citizens correlate with happiness?")
 			d3.select("#left").text("Low Life Expentancy")
 			d3.select("#right").text("High Life Expentancy")
 		}
 		else if(selected_variable == "socialSupport"){
-			d3.select("#explanation").text("Does social support have an affect on happiness")
+			d3.select("#explanation").text("Does social support have an affect on happiness?")
 			d3.select("#left").text("Low Social Support")
 			d3.select("#right").text("High Social Support")
 		}
 		else if(selected_variable == "freedomToMakeLifeChoices"){
-			d3.select("#explanation").text("Is there a correlation between how much freedom a person gets and happiness")
+			d3.select("#explanation").text("Is there a correlation between how much freedom a person gets and happiness?")
 			d3.select("#left").text("Less Freedom")
 			d3.select("#right").text("More Freedom")
 		}
 		else if(selected_variable == "perceptionsOfCorruption"){
-			d3.select("#explanation").text("Is there a correlation between the perception of how corrupt the government is and happiness")
+			d3.select("#explanation").text("Is there a correlation between the perception of how corrupt the government is and happiness?")
 			d3.select("#left").text("Low Perception of Corruption")
 			d3.select("#right").text("High Perception of Corruption")
 		}
@@ -299,7 +259,7 @@ d3.csv('countriesdata.csv', function(data){
         var maxV = d3.max(noZeroes, d => +d[selected_variable]);
         console.log(minV, maxV)
 
-        xScale.domain([minV, maxV])
+        bubblexScale.domain([minV, maxV])
 
 		var newData = data.filter(function(d) { return d.year == year })
         // console.log(xScale.domain)
@@ -337,19 +297,19 @@ d3.csv('countriesdata.csv', function(data){
 
 function drawBar(country)
 {
-	var newmargin = {top: 10, right: 30, bottom: 20, left: 250},
-		newwidth = 1000 - newmargin.left - newmargin.right,
-		newheight = 400 - newmargin.top - newmargin.bottom;
+	var bubblebarmargin = {top: 10, right: 30, bottom: 20, left: 250},
+		bubblebarwidth = 1000 - bubblebarmargin.left - bubblebarmargin.right,
+		bubblebarheight = 400 - bubblebarmargin.top - bubblebarmargin.bottom;
 
 
 	// append the svg object to the body of the page
 	var svg = d3.select("#bubblebar")
 	.append("svg").classed("bar" + country, true)
-		.attr("width", newwidth + newmargin.left + newmargin.right)
-		.attr("height", newheight + newmargin.top + newmargin.bottom)
+		.attr("width", bubblebarwidth + bubblebarmargin.left + bubblebarmargin.right)
+		.attr("height", bubblebarheight + bubblebarmargin.top + bubblebarmargin.bottom)
 	.append("g")
 		.attr("transform",
-			"translate(" + newmargin.left + "," + newmargin.top + ")");
+			"translate(" + bubblebarmargin.left + "," + bubblebarmargin.top + ")");
 
 	// Parse the Data
 	d3.csv("countrieshappiness.csv", function(data) {
@@ -362,29 +322,29 @@ function drawBar(country)
 	var groups = d3.map(data, function(d){return(d["Country"])}).keys()
 
 	// Add X axis
-	var y = d3.scaleBand()
+	var bubblebary = d3.scaleBand()
 		.domain(groups)
-		.range([0, newheight])
+		.range([0, bubblebarheight])
 		.padding([0.2])
 	//   svg.append("g")
 	//   	.call(d3.axisLeft(y));
 
 	// Add Y axis
-	var x = d3.scaleLinear()
+	var bubblebarx = d3.scaleLinear()
 		.domain([0, 5])
-		.range([ 0, newwidth ]);
+		.range([ 0, bubblebarwidth ]);
 	//   svg.append("g")
 	// 	.attr("transform", "translate(0," + newwidth + ")")
 	//     .call(d3.axisBottom(x).tickSizeOuter(0));
 
 	// color palette = one color per subgroup
-	var color = d3.scaleOrdinal()
+	var bubblebarcolor = d3.scaleOrdinal()
 		.domain(subgroups)
 		.range(['#FF6C56','#58B23C','#3CB297', '#56B4FF', '#BBAAFF'])
 
-	var tooltip2 = d3.select("body").append("div")
+	var stackedTooltip = d3.select("body").append("div")
         .style("position", "absolute")
-        .attr("class", "tooltip2")
+        .attr("class", "stackedTooltip")
         .style("background-color", "#AAC5FF")
         .style("width", "160px")
         .style("height", "40px")
@@ -401,7 +361,7 @@ function drawBar(country)
 		.style("opacity", 1);
 
 		var html  = "" + d.key;
-		tooltip2.html(html)
+		stackedTooltip.html(html)
 				.style("left", (d3.event.pageX + 10) + "px") //position the tooltip on mouse cursor
 				.style("top", (d3.event.pageY - 100) + "px") //position the tooltip on mouse cursor
 			//.style("background-color", colors(d.country))
@@ -412,7 +372,7 @@ function drawBar(country)
 	};
 
 	var tooltipMove = function(d) { 
-        d3.select('.tooltip2')
+        d3.select('.stackedTooltip')
         .style('left', (d3.event.pageX + 10) + 'px') //position the tooltip on mouse cursor
         .style('top', (d3.event.pageY - 100) + 'px') //position the tooltip on mouse cursor
 	};
@@ -428,7 +388,7 @@ function drawBar(country)
 			.style("stroke-width", 0);
 		}
 
-        tooltip2.transition()
+        stackedTooltip.transition()
           .duration(300) // ms
           .style("opacity", 0); // don't care about position!
 
@@ -448,7 +408,7 @@ function drawBar(country)
 		// Enter in the stack data = loop key per key = group per group
 		.data(stackedData)
 		.enter().append("g")
-		.attr("fill", function(d) { return color(d.key); })
+		.attr("fill", function(d) { return bubblebarcolor(d.key); })
 		.on('mouseover', showTooltip)
 		.on('mouseout', removeTooltip)
 		.on('mousemove', tooltipMove)
@@ -458,12 +418,10 @@ function drawBar(country)
 		//   .filter(function(d) { return d.data["Country"] == "Finland"})
 		.enter().append("rect")
 			// .attr("y", function(d) { return y(d.data["Country"]); })
-			.attr("x", function(d) { return x(d[0]); })
-			.attr("width", function(d) { return x(d[1]) - x(d[0]); })
+			.attr("x", function(d) { return bubblebarx(d[0]); })
+			.attr("width", function(d) { return bubblebarx(d[1]) - bubblebarx(d[0]); })
 			.attr("height", 50)
 			
 	})
 }
-
-
 
