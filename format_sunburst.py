@@ -36,7 +36,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
     for region in region_dict:
         r = {"id":region, "score": score_dict[region], "children":[]}
         for c in region_dict[region]:
-            r["children"].append({"id":c[0], "score":c[1], "size":num_regions/c[2]})
+            r["children"].append({"id":c[0], "score":c[1], "size":1})
         data["children"].append(r)
                 
 

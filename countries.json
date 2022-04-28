@@ -1,5 +1,6 @@
 {
     "id": "COUNTRIES",
+    "score":100,
     "children": [
         {
             "id": "Western Europe",
@@ -8,102 +9,102 @@
                 {
                     "id": "Finland",
                     "score": "7.769",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Denmark",
                     "score": "7.6",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Norway",
                     "score": "7.5539999999999985",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Iceland",
                     "score": "7.494",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Netherlands",
                     "score": "7.487999999999999",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Switzerland",
                     "score": "7.48",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Sweden",
                     "score": "7.343",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Austria",
                     "score": "7.246",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Luxembourg",
                     "score": "7.09",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "United Kingdom",
                     "score": "7.0539999999999985",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Ireland",
                     "score": "7.021",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Germany",
                     "score": "6.985",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Belgium",
                     "score": "6.922999999999999",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Malta",
                     "score": "6.726",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "France",
                     "score": "6.5920000000000005",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Spain",
                     "score": "6.354",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Italy",
                     "score": "6.223",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Cyprus",
                     "score": "6.046",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Portugal",
                     "score": "5.693",
-                    "size": 145.0
+                    "size": 1
                 },
                 {
                     "id": "Greece",
                     "score": "5.287000000000001",
-                    "size": 145.0
+                    "size": 1
                 }
             ]
         },
@@ -114,12 +115,12 @@
                 {
                     "id": "New Zealand",
                     "score": "7.307",
-                    "size": 10.0
+                    "size": 1
                 },
                 {
                     "id": "Australia",
                     "score": "7.228",
-                    "size": 10.0
+                    "size": 1
                 }
             ]
         },
@@ -130,12 +131,12 @@
                 {
                     "id": "Canada",
                     "score": "7.278",
-                    "size": 10.0
+                    "size": 1
                 },
                 {
                     "id": "United States",
                     "score": "6.892",
-                    "size": 10.0
+                    "size": 1
                 }
             ]
         },
@@ -146,107 +147,107 @@
                 {
                     "id": "Costa Rica",
                     "score": "7.167000000000002",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Mexico",
                     "score": "6.595",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Chile",
                     "score": "6.444",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Guatemala",
                     "score": "6.436",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Panama",
                     "score": "6.3210000000000015",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Brazil",
                     "score": "6.3",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Uruguay",
                     "score": "6.292999999999998",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "El Salvador",
                     "score": "6.252999999999999",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Trinidad and Tobago",
                     "score": "6.192",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Colombia",
                     "score": "6.125",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Nicaragua",
                     "score": "6.105",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Argentina",
                     "score": "6.086",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Ecuador",
                     "score": "6.028",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Jamaica",
                     "score": "5.89",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Honduras",
                     "score": "5.86",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Bolivia",
                     "score": "5.779",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Paraguay",
                     "score": "5.7429999999999986",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Peru",
                     "score": "5.697",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Dominican Republic",
                     "score": "5.425",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Venezuela",
                     "score": "4.707",
-                    "size": 152.0
+                    "size": 1
                 },
                 {
                     "id": "Haiti",
                     "score": "3.597",
-                    "size": 152.0
+                    "size": 1
                 }
             ]
         },
@@ -257,102 +258,102 @@
                 {
                     "id": "Israel",
                     "score": "7.1389999999999985",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "United Arab Emirates",
                     "score": "6.825",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Saudi Arabia",
                     "score": "6.375",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Qatar",
                     "score": "6.374",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Bahrain",
                     "score": "6.199",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Kuwait",
                     "score": "6.021",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Northern Cyprus",
                     "score": "5.718",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Libya",
                     "score": "5.525",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Turkey",
                     "score": "5.372999999999998",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Algeria",
                     "score": "5.211",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Morocco",
                     "score": "5.207999999999998",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Lebanon",
                     "score": "5.197",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Jordan",
                     "score": "4.9060000000000015",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Palestinian Territories",
                     "score": "4.6960000000000015",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Iran",
                     "score": "4.548",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Tunisia",
                     "score": "4.461",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Iraq",
                     "score": "4.437",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Egypt",
                     "score": "4.166",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Syria",
                     "score": "3.462",
-                    "size": 98.00000000000001
+                    "size": 1
                 },
                 {
                     "id": "Yemen",
                     "score": "3.38",
-                    "size": 98.00000000000001
+                    "size": 1
                 }
             ]
         },
@@ -363,147 +364,147 @@
                 {
                     "id": "Czech Republic",
                     "score": "6.852",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Slovakia",
                     "score": "6.198",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Poland",
                     "score": "6.182",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Uzbekistan",
                     "score": "6.174",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Lithuania",
                     "score": "6.149",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Slovenia",
                     "score": "6.1179999999999986",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Kosovo",
                     "score": "6.1",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Romania",
                     "score": "6.07",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Latvia",
                     "score": "5.94",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Estonia",
                     "score": "5.893",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Kazakhstan",
                     "score": "5.809",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Hungary",
                     "score": "5.757999999999999",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Russia",
                     "score": "5.648",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Serbia",
                     "score": "5.603",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Moldova",
                     "score": "5.529",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Montenegro",
                     "score": "5.523",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Tajikistan",
                     "score": "5.4670000000000005",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Croatia",
                     "score": "5.432",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Bosnia and Herzegovina",
                     "score": "5.386",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Belarus",
                     "score": "5.323",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "North Macedonia",
                     "score": "5.274",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Kyrgyzstan",
                     "score": "5.261",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Turkmenistan",
                     "score": "5.247000000000001",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Azerbaijan",
                     "score": "5.207999999999998",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Bulgaria",
                     "score": "5.011",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Albania",
                     "score": "4.7189999999999985",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Armenia",
                     "score": "4.559",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Georgia",
                     "score": "4.519",
-                    "size": 179.0
+                    "size": 1
                 },
                 {
                     "id": "Ukraine",
                     "score": "4.332",
-                    "size": 179.0
+                    "size": 1
                 }
             ]
         },
@@ -514,32 +515,32 @@
                 {
                     "id": "Taiwan",
                     "score": "6.4460000000000015",
-                    "size": 30.0
+                    "size": 1
                 },
                 {
                     "id": "South Korea",
                     "score": "5.895",
-                    "size": 30.0
+                    "size": 1
                 },
                 {
                     "id": "Japan",
                     "score": "5.886",
-                    "size": 30.0
+                    "size": 1
                 },
                 {
                     "id": "Hong Kong",
                     "score": "5.43",
-                    "size": 30.0
+                    "size": 1
                 },
                 {
                     "id": "Mongolia",
                     "score": "5.285",
-                    "size": 30.0
+                    "size": 1
                 },
                 {
                     "id": "China",
                     "score": "5.191",
-                    "size": 30.0
+                    "size": 1
                 }
             ]
         },
@@ -550,47 +551,47 @@
                 {
                     "id": "Singapore",
                     "score": "6.2620000000000005",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Thailand",
                     "score": "6.007999999999999",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Philippines",
                     "score": "5.631",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Malaysia",
                     "score": "5.339",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Indonesia",
                     "score": "5.192",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Vietnam",
                     "score": "5.175",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Laos",
                     "score": "4.796",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Cambodia",
                     "score": "4.7",
-                    "size": 44.0
+                    "size": 1
                 },
                 {
                     "id": "Myanmar",
                     "score": "4.36",
-                    "size": 44.0
+                    "size": 1
                 }
             ]
         },
@@ -601,202 +602,202 @@
                 {
                     "id": "Mauritius",
                     "score": "5.888",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Nigeria",
                     "score": "5.265",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Cameroon",
                     "score": "5.044",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Ghana",
                     "score": "4.996",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Ivory Coast",
                     "score": "4.944",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Benin",
                     "score": "4.883",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Congo (Brazzaville)",
                     "score": "4.812",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Gabon",
                     "score": "4.799",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "South Africa",
                     "score": "4.722",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Senegal",
                     "score": "4.681",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Somalia",
                     "score": "4.668",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Namibia",
                     "score": "4.6389999999999985",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Niger",
                     "score": "4.628",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Burkina Faso",
                     "score": "4.587",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Guinea",
                     "score": "4.534",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Gambia",
                     "score": "4.516",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Kenya",
                     "score": "4.509",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Mauritania",
                     "score": "4.49",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Mozambique",
                     "score": "4.466",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Congo (Kinshasa)",
                     "score": "4.418",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Mali",
                     "score": "4.39",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Sierra Leone",
                     "score": "4.374",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Chad",
                     "score": "4.35",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Ethiopia",
                     "score": "4.2860000000000005",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Swaziland",
                     "score": "4.212",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Uganda",
                     "score": "4.189",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Zambia",
                     "score": "4.107",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Togo",
                     "score": "4.085",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Liberia",
                     "score": "3.975",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Comoros",
                     "score": "3.973",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Madagascar",
                     "score": "3.933",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Lesotho",
                     "score": "3.802",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Burundi",
                     "score": "3.775",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Zimbabwe",
                     "score": "3.663",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Botswana",
                     "score": "3.488",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Malawi",
                     "score": "3.41",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Rwanda",
                     "score": "3.334",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Tanzania",
                     "score": "3.2310000000000003",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "Central African Republic",
                     "score": "3.083",
-                    "size": 271.0
+                    "size": 1
                 },
                 {
                     "id": "South Sudan",
                     "score": "2.853",
-                    "size": 271.0
+                    "size": 1
                 }
             ]
         },
@@ -807,37 +808,37 @@
                 {
                     "id": "Pakistan",
                     "score": "5.653",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "Bhutan",
                     "score": "5.082",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "Nepal",
                     "score": "4.913",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "Bangladesh",
                     "score": "4.456",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "Sri Lanka",
                     "score": "4.3660000000000005",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "India",
                     "score": "4.015",
-                    "size": 35.0
+                    "size": 1
                 },
                 {
                     "id": "Afghanistan",
                     "score": "3.2030000000000003",
-                    "size": 35.0
+                    "size": 1
                 }
             ]
         }
