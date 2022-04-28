@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Happiness Barchart- Number of Activities in Area</title>
+		<style type="text/css">
+
+			rect:hover {
+				fill: lightblue;
+			}
+			
+			#tooltip {
+				position: absolute;
+				width: auto;
+				height: auto;
+				padding: 10px;
+				background-color: white;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				pointer-events: none;
+			}
+			
+			#tooltip.hidden {
+				display: none;
+			}
+			
+			#tooltip p {
+				margin: 0;
+				font-family: sans-serif;
+				font-size: 16px;
+				line-height: 20px;
+			}
+
+		</style>
+	</head>
+	<body>
+        <h1> Amount of Activities in Area</h1>
+        
+		<input type="file" name="inputfile"
+            id="inputfile">
+	
+    <br>
+ 
+    <pre id="output" ></pre>
+		<div id="tooltip" class="hidden">
+			
+			<p id="value"></p>
+			<p id="value2"></p>
+		</div>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<script type="text/javascript">
+            
+
+			//Width and height
+			var w = 600;
+			var h = 250;
+			var margin = {top: 30, right: 30, bottom: 70, left: 60};
+		function loadusercsv(){
+			var filedata = "xx";
+			document.getElementById('inputfile')
+            .addEventListener('change', function() {
+            	var fr=new FileReader();
+            	fr.onload=function(){
+					filedata = fr.result;
+					mainbody(d3.csvParse(filedata));
+            	}
+				fr.readAsText(this.files[0]);
+            });
+		};
+
+            loadusercsv();
+		    //d3.csv('/users/brock/documents/emily/happy1.csv', mainbody);
+	function mainbody(datab){
+           console.log('data 0');
+		   console.log(datab[0]);
+		   var maxhappy = 0;
+		   var maxActivities = 0;
+        	doSomethingWithRows(datab);
+                
+            function doSomethingWithRows(data){
+				console.log("in dosomething");
+				console.log(data);
+                data.forEach(function(row){
+					console.log(row.Happiness);
+					if (row.Happiness > maxhappy) maxhappy = row.Happiness;
+					if (row.Activities > maxActivities) maxActivities = row.Activities;
+                 });
+				console.log("maxhappy = " + maxhappy);
+				console.log("maxActivities = " + maxActivities);
+            }
+        
+            var labels = datab.map(function(d) { return d.City; });
+			console.log(labels);
+			var xScale = d3.scaleBand()
+							.domain(d3.range(datab.length))
+							//.domain(datab.map(function(d) { return d.City; }))
+							.rangeRound([0, w])
+							.paddingInner(0.05);
+
+			let xAxisGenerator = d3.axisBottom(xScale);	
+			xAxisGenerator.tickFormat((d,i) => labels[i]);
+
+			var yScale = d3.scaleLinear()
+							.domain([0, maxActivities])
+							.range([h, 0]);
+			let yAxisGenerator = d3.axisLeft(yScale);	
+            
+        
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w + margin.left + margin.right)
+  					    .attr("height", h + margin.top + margin.bottom)
+						.append("g")
+    					.attr("transform",
+         						 "translate(" + margin.left + "," + margin.top + ")");
+			//x axis
+			svg.append("g")
+				.attr("transform", "translate(0, " + h  +")")
+				.call(xAxisGenerator)
+				.selectAll("text")
+   				.attr("transform", "translate(-10,0)rotate(-45)")
+    			.style("text-anchor", "end");
+			//y axis
+			svg.append("g")
+       		   .call(yAxisGenerator);
+			
+			//Create bars
+			svg.selectAll("rect")
+			   .data(datab)
+			   .enter()
+			   .append("rect")
+			   //.attr("x", function(d, i) {return xScale(d.City);})
+			   .attr("x", function(d, i) {return xScale(i);})
+			   .attr("y", function(d) {return yScale(d.Activities);})
+			   .attr("width", xScale.bandwidth())
+			   .attr("height", function(d) { return h - yScale(d.Activities); })
+			   
+			   .attr("val", function(d) { 
+				   return d.City })
+				.attr("val2", function(d) { 
+                      return " Activities Level: " + d.Activities + " Happiness Level: " + d.Happiness })
+			   .attr("fill", function(d) {
+				    var blu = 0;
+					var grn = 0;
+					if ( !isNaN(d.Happiness)) blu = Math.round(255 * d.Happiness/ maxhappy);
+					if (blu > 255) blu = 255;
+					if ( blu < 0) blu = 0;
+					grn = 255 - blu;
+					//return "rgb(0, " + grn + " , " + blu + ")";
+                     return d3.interpolateInferno(d.Happiness/(maxhappy))
+			   })
+			   .on("mouseover", function(d) {
+
+					//Get this bar's x/y values, then augment for the tooltip
+					var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
+					var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+					//Update the tooltip position and value
+					d3.select("#tooltip")
+						.style("left", xPosition + "px")
+						.style("top", yPosition + "px")						
+					document.getElementById("value").innerHTML = d3.select(this).attr("val")
+					document.getElementById("value2").innerHTML = d3.select(this).attr("val2")
+
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);
+
+			   })
+			   .on("mouseout", function() {
+			   
+					//Hide the tooltip
+					d3.select("#tooltip").classed("hidden", true);
+					
+			   })
+			   .on("click", function() {
+			   		sortBars();
+			   });
+
+			//Define sort order flag
+			var sortOrder = false;
+			
+			//Define sort function
+			var sortBars = function() {
+
+				//Flip value of sortOrder
+			   	sortOrder = !sortOrder;
+				svg.selectAll("rect")
+				   .sort(function(a, b) {
+				   		if (sortOrder) {
+					   		return d3.ascending(+a.Happiness, +b.Happiness);
+				   		} else {
+					   		return d3.ascending(+a.Activities, +b.Activities);
+				   		}
+				   	})
+				   .transition()
+				   .delay(function(d, i) {
+					   return i * 50;
+				   })
+				   .duration(1000)
+				   .attr("x", function(d, i) {
+					   labels[i] = d.City;
+					   return xScale(i);
+				   });
+				svg.call(xAxisGenerator);
+				//svg.call(yAxisGenerator);
+			
+			};			
+	};
+    
+    
+		</script>
+       
+          
+      
+	</body>
+</html>
