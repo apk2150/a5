@@ -343,7 +343,7 @@ function drawBar(country)
 
 
 	// append the svg object to the body of the page
-	var svg = d3.select("#bubblebar")
+	var bub_svg = d3.select("#bubblebar")
 	.append("svg").classed("bar" + country, true)
 		.attr("width", newwidth + newmargin.left + newmargin.right)
 		.attr("height", newheight + newmargin.top + newmargin.bottom)
@@ -352,7 +352,7 @@ function drawBar(country)
 			"translate(" + newmargin.left + "," + newmargin.top + ")");
 
 	// Parse the Data
-	d3.csv("countrieshappiness.csv", function(data) {
+	d3.csv('merged_years.csv', function(data) {
 
 	// List of subgroups = header of the csv files = soil condition here
 	var subgroups = data.columns.slice(11,16)
@@ -443,7 +443,7 @@ function drawBar(country)
 		console.log(stackedData)
 
 	// Show the bars
-	svg.append("g")
+	bub_svg.append("g")
 		.selectAll("g")
 		// Enter in the stack data = loop key per key = group per group
 		.data(stackedData)

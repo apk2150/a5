@@ -1,8 +1,23 @@
+body {
+    background-color: #ffffe0;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 100;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+    text-align: center; 
+  }
+
 svg {
     display: block;
     margin: auto;
     padding: 10 0 10 0;
   }
+
+.bubblechart {
+    padding-top:100px;
+}
    
 .button {
     width: 100px;
@@ -11,6 +26,7 @@ svg {
     background-color: white;
     border-radius: 10px;
     border: 2px solid #F99E4F;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
 .button:hover {
@@ -55,14 +71,17 @@ ul{
     float:left;
     width:200px;
     overflow: hidden;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
 #right{
     /* float: right; */
     width:200px;
     margin-left: 55%;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
 .info{
     margin-left: 200px;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
