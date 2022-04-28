@@ -44,3 +44,19 @@
 ul{
     list-style-type: none;
 }
+
+#left{
+    float:left;
+    width:200px;
+    overflow: hidden;
+}
+
+#right{
+    /* float: right; */
+    width:200px;
+    margin-left: 55%;
+}
+
+.info{
+    margin-left: 200px;
+}
