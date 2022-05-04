@@ -1,0 +1,14 @@
+{
+  "name": "aa27d000b573fe1e",
+  "main": "aa27d000b573fe1e@229.js",
+  "version": "229.0.0",
+  "homepage": "https://observablehq.com/d/aa27d000b573fe1e",
+  "author": {
+    "name": "Alison Keenan",
+    "url": "https://observablehq.com/@bf612640724afd45"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

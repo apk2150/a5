@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<head>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="bubblechart.js"></script>
-<link href="style.css">
-<title>World Happiness Report</title>
-</head>
+<meta charset="utf-8">
+<title>A5</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
 <body>
+<script type="module">
 
-    <h1>World Happiness Report</h1>
-</body>
+import define from "./index.js";
+import {Runtime, Library, Inspector} from "./runtime.js";
+
+const runtime = new Runtime();
+const main = runtime.module(define, Inspector.into(document.body));
+
+</script>
