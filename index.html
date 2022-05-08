@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -19,41 +19,55 @@
     <div id="div_template"></div>
 
     <!-- Bubble chart -->
+    <h2 id="bubblechartheader">Happiness in Countries and How They Relate to Different Variables</h2>
+    <div id="slider"></div>
     <div class="bubblechart">
-        <div id="explanation" class="info">
-            GDP corresponds to how the country's economy affects the happiness of the citizens.
+        <div class="bubblechartinner">
+            <div class="info">
+                Happiness rankings are based on individuals' own assessments of their lives based on the Cantril ladder. 
+                The variables don't contribute to the happiness ranking score but explain the variation of happiness 
+                across countries, and show how the positive effects of the different variables explain the high happiness scores.
+            </div>
+            <div class="buttons">
+                <!-- <ul id="bubblechartbuttons"> -->
+                    <button class="button bubble_select" value="logGDPPerCapita">GDP</button>
+                    <button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button>
+                    <button class="button bubble_select" value="socialSupport">Social Support</button>
+                    <button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button>
+                    <button class="button bubble_select" value="perceptionsOfCorruption">Perceptions of Corruption</button>
+                <!-- </ul> -->
+            </div>
+
+            <div id="explanation" class="info">
+                GDP is calculated by taking log of the country's GDP. It shows how the country's economy is doing in the year.
+            </div>
+
+            <div id="bubblelegend" style="display: inline-block"></div>
+            
+
+            <div id="bubble"></div>
+            <div id="left">Low GDP</div>
+            <div id="right">High GDP</div>
+            <!-- <div class="moreinfo">
+                <h3 id="country"></h3>
+                <p id="happiness"></p>
+                <p id="GDP">GDP</p>
+                <p id="lifeexpentency"></p>
+                <p id="socialsupport"></p>
+                <p id="freedom"></p>
+            </div> -->
+
+
+            <div id="clickinfo" class="info">Go to 2020 on the slider and click on any country to see the break down of the contributors of happiness!</div>
+            
+            <div id="bubblebar"></div>
+            <div id="bubblebarlegend"></div>
+
         </div>
-        <div id="bubblelegend"></div>
-        <div class="buttons">
-            <ul id="bubblechartbuttons">
-                <li><button class="button bubble_select" value="logGDPPerCapita">GDP</button></li>
-                <li><button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button></li>
-                <li><button class="button bubble_select" value="socialSupport">Social Support</button></li>
-                <li><button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button></li>
-                <li><button class="button bubble_select" value="perceptionsOfCorruption">Perceptions of Corruption</button></li>
-            </ul>
-        </div>
-
-        <div id="bubble"></div>
-        <div id="left">Low GDP</div>
-        <div id="right">High GDP</div>
-        <!-- <div class="moreinfo">
-            <h3 id="country"></h3>
-            <p id="happiness"></p>
-            <p id="GDP">GDP</p>
-            <p id="lifeexpentency"></p>
-            <p id="socialsupport"></p>
-            <p id="freedom"></p>
-        </div> -->
-        <div id="slider"></div>
-
-        <div class="info">Go to 2020 on the slider and click on any country to see the break down of the contributors of the happiness score!</div>
-        
-        <div id="bubblebar"></div>
-        <h1>Line Chart</h1>
-       
-
     </div>
+
+
+
     <iframe width="100%" height="690" frameborder="0"
   src="https://observablehq.com/embed/c3a12e49084c174f?cells=viewof+filteredAttr%2Cchart2"></iframe>
     <script type="text/javascript" src="sunburst.js"></script>
