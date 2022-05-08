@@ -136,8 +136,16 @@ ul{
     padding-bottom: 80px;
 }
 
+#bubblelegendtitle{
+    float: left;
+    display: flex;
+    margin-left: 27%;
+    margin-top: 10px;
+}
+
 #bubblelegend{
-    float:right;
+    float: right;
+    display: block;
 }
 
 #bubblebar{
