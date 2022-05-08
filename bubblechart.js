@@ -225,17 +225,17 @@ d3.csv('countriesdata.csv', function(data){
 			d3.select("#right").text("High Life Expentancy")
 		}
 		else if(selected_variable == "socialSupport"){
-			d3.select("#explanation").text("Does social support have an affect on happiness?")
+			d3.select("#explanation").text("Social support is a score that is the average of a rating given by surveyors about how supported individuals feel. This shows a positive effect on the happiness score.")
 			d3.select("#left").text("Low Social Support")
 			d3.select("#right").text("High Social Support")
 		}
 		else if(selected_variable == "freedomToMakeLifeChoices"){
-			d3.select("#explanation").text("Is there a correlation between how much freedom a person gets and happiness?")
+			d3.select("#explanation").text("Freedom to make life choices is a rating provided by individuals based on how much freedom they get in their country. This shows a positive effect on the happiness score. ")
 			d3.select("#left").text("Less Freedom")
 			d3.select("#right").text("More Freedom")
 		}
 		else if(selected_variable == "perceptionsOfCorruption"){
-			d3.select("#explanation").text("Is there a correlation between the perception of how corrupt the government is and happiness?")
+			d3.select("#explanation").text("Perceptions of corruption is a rating provided by individuals based on how corrupt they believe their government is. This shows a negative effect on the happiness score.")
 			d3.select("#left").text("Low Perception of Corruption")
 			d3.select("#right").text("High Perception of Corruption")
 		}
