@@ -564,7 +564,7 @@
                     	return d3.interpolateInferno(val);
 			   		})
 					.attr("val", function(d) { 
-				   		return d[xaxisname] + " : " + yaxisname + " = " + d[yaxisname] })
+				   		return  yaxisname + ": " + d[yaxisname] })
 					.attr("val2", function(d) { return "Line"});
 				
 				yaxis.transition().duration(6000)
