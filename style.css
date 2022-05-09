@@ -25,6 +25,11 @@ svg {
     padding-bottom:200px;
 }
 
+#sunburstheader {
+    margin: auto;
+    text-align: center; 
+}
+
 #bubblechartheader {
     margin: auto;
     text-align: center; 
@@ -132,6 +137,12 @@ ul{
 
 #clickinfo{
     padding-top: 50px;
+}
+
+#suninfo{
+    padding-top: 20px;
+    padding-bottom: 50px;
+
 }
 
 .bubblechartinner{
