@@ -1,0 +1,245 @@
+body {
+    background-color: #ffffe0;
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+    text-align: center; 
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+#names {
+    padding-bottom: 50px;
+}
+
+
+svg {
+    display: block;
+    margin: auto;
+    padding: 10 0 10 0;
+}
+
+.bubblechart {
+    
+    padding-bottom:200px;
+}
+
+#bubblechartheader {
+    margin: auto;
+    text-align: center; 
+    padding-top:150px;
+    padding-bottom: 20px;
+}
+    
+
+.button {
+    width: 120px;
+    height: 45px;
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #F99E4F;
+    font-size: 14px;
+}
+
+.button:hover {
+    background-color: #F9ECE0;
+    border: 2px solid #F99E4F;
+    box-shadow: 2px 2px 2px #C2C2C2;
+}
+
+.buttons{
+    /* float: left; */
+    /* width: 85%; */
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    /* overflow: hidden; */
+    margin:auto;
+}
+
+.slider{
+    display: flex;
+    float: left;
+    width:10%;
+    margin-left:15%;
+    margin-top:18%;
+}
+
+/* https://bl.ocks.org/henryjameslau/d258d53d1fd390d259ed9bb9cec6547e */
+.parameter-value path{
+    fill:#9D4F8A;
+    stroke:white;
+    stroke-width:1.5px;
+  }
+  .parameter-value path:focus{
+    fill:#9D4F8A;
+    stroke:#FCB350;
+    stroke-width:3px;
+  }
+
+.d3slider-rect-value {
+    fill: #006EE3;
+    stroke: none;
+  }
+
+
+.moreinfo{
+    float: right;
+    /* width: 15%; */
+    height: 300px;
+    /* display: flex;
+    justify-content: center;
+    overflow: hidden; */
+    /* margin-left: 60%; */
+}
+
+.bubble{
+    float: left;
+    /* display: flex; */
+}
+
+ul{
+    list-style-type: none;
+}
+
+#left{
+    float:left;
+    width:200px;
+    overflow: hidden;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#right{
+    /* float: right; */
+    width:200px;
+    margin-left: 70%;
+    text-align: center;
+}
+
+.info{
+    /* margin-left: 200px; */
+    text-align: center;
+    margin-bottom: 10px;
+    display:block;
+}
+
+#explanation{
+    height: 50px;
+}
+
+#clickinfo{
+    padding-top: 50px;
+}
+
+.bubblechartinner{
+    display: block;
+    margin: auto;
+    width:50%;
+    padding-bottom: 80px;
+}
+
+#bubblelegendtitle{
+    float: left;
+    display: flex;
+    margin-left: 27%;
+    margin-top: 10px;
+}
+
+#bubblelegend{
+    float: right;
+    display: block;
+}
+
+#bubblebar{
+    float:left;
+}
+
+#bubblebarlegend{
+    display: flex;
+    float: right;
+    position:absolute;
+    margin: 5% 0 0 45%;
+}
+.group {
+    background: yellow;
+    width: 200px;
+    height: 500px;
+}
+.group .subgroup {
+    background: orange;
+    width: 150px;
+    height: 200px;
+}
+.fixed {
+    position: fixed;
+}
+
+/* sidebar */
+.bs-docs-sidebar {
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* all links */
+.bs-docs-sidebar .nav>li>a {
+    color: #999;
+    border-left: 2px solid transparent;
+    padding: 4px 20px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* nested links */
+.bs-docs-sidebar .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+}
+
+/* active & hover links */
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>li>a:hover, 
+.bs-docs-sidebar .nav>li>a:focus {
+    color: #563d7c;                 
+    text-decoration: none;          
+    background-color: transparent;  
+    border-left-color: #563d7c; 
+}
+/* all active links */
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+    font-weight: 700;
+}
+/* nested active links */
+.bs-docs-sidebar .nav .nav>.active>a, 
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+    font-weight: 500;
+}
+
+/* hide inactive nested list */
+.bs-docs-sidebar .nav ul.nav {
+    display: none;           
+}
+/* show active nested list */
+.bs-docs-sidebar .nav>.active>ul.nav {
+    display: block;           
+}
+
+#linechartheader {
+    padding-top:30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.divider {
+    width: 100%;
+    height:20px;
+    display: block;
+}

@@ -1,11 +1,160 @@
 <!DOCTYPE html>
 <head>
-<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>World Happiness Report</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- add after bootstrap.min.css -->
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="https://www.usacustomjackets.com/wp-content/uploads/2016/07/smiley-face.png">
+    <title>World Happiness Report</title>
+    
+    
 </head>
 <body>
-    <div id="div_template"></div>
-</body>
-<script type="text/javascript" src="sunburst.js"></script>
 
+   <div class="row">
+    <!-- <div class="col-1"> -->
+        <nav class="col-xs-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+            <li>
+                <a href="#div_template">Region</a>
+            </li> <br>
+            <li>
+                <a href="#bubblechartheader">Country Factors</a>
+            </li><br>
+            <li>
+                <a href="#line">Countries</a>
+            </li><br>
+            <li>
+                <a href="#bar">Cities</a>
+            </li>
+        </ul>
+    </nav>
+      
+    <!-- </div> -->
+    <div class="col">
+        
+        <h1> World Happiness Report</h1>
+        <h3 id="names"> Emily Rooney, Alison Keenan, Namratha Prithviraj, and Saahiti Jasti </h3>
+      <!-- Sunburst chart -->   
+    <div id="div_template"></div>
+
+    <!-- Bubble chart -->
+        
+        
+    <h2 id="bubblechartheader">Happiness in Countries and How They Relate to Different Variables</h2>
+    <div id="slider"></div>
+    <div class="bubblechart">
+        <div class="bubblechartinner">
+            <div class="info">
+                Happiness rankings are based on individuals' own assessments of their lives based on the Cantril ladder. 
+                The variables don't contribute to the happiness ranking score but explain the variation of happiness 
+                across countries, and show how the positive effects of the different variables explain the high happiness scores.
+            </div>
+            <div class="buttons">
+                <!-- <ul id="bubblechartbuttons"> -->
+                    <button class="button bubble_select" value="logGDPPerCapita">GDP</button>
+                    <button class="button bubble_select" value="healthyLifeExpectancyAtBirth">Life Expectancy</button>
+                    <button class="button bubble_select" value="socialSupport">Social Support</button>
+                    <button class="button bubble_select" value="freedomToMakeLifeChoices">Freedom</button>
+                    <button class="button bubble_select" value="perceptionsOfCorruption">Perceptions of Corruption</button>
+                <!-- </ul> -->
+            </div>
+
+            <div id="explanation" class="info">
+                GDP is calculated by taking log of the country's GDP. It shows how the country's economy is doing in the year.
+            </div>
+
+            <div id="bubblelegendtitle">Happiness Score</div>
+            <div id="bubblelegend"></div>
+            
+
+            <div id="bubble"></div>
+            <div id="left">Low GDP</div>
+            <div id="right">High GDP</div>
+            <!-- <div class="moreinfo">
+                <h3 id="country"></h3>
+                <p id="happiness"></p>
+                <p id="GDP">GDP</p>
+                <p id="lifeexpentency"></p>
+                <p id="socialsupport"></p>
+                <p id="freedom"></p>
+            </div> -->
+
+
+            <div id="clickinfo" class="info">Go to 2020 on the slider and click on any country to see the break down of the contributors of happiness!</div>
+            
+            <div id="bubblebar"></div>
+            <div id="bubblebarlegend"></div>
+
+        </div>
+        
+    </div>
+
+   
+        <div id="line">
+            <div class="divider"></div>
+            <div id="linechartheader" class="info">
+                <h2>Compare multiple countries happiness levels throughout the years</h2>
+            </div>
+    <iframe width="100%" height="706" frameborder="0"
+  src="https://observablehq.com/embed/c3a12e49084c174f?cells=chart2%2Cviewof+filteredAttr%2Cviewof+toggle"></iframe>
+    <script type="text/javascript" src="sunburst.js"></script>
+    <script type="text/javascript"  src="bubblechart.js"></script></div>
+    <h1></h1>
+    <br>
+    <!--        <h2>Available Graphs</h2>-->
+    <br>
+        
+     <div id="bar"></div>
+    <iframe id="inlineFrameExample"
+        title="Inline Frame Example"
+        width="49%"
+        height="500"
+        frameborder="2"
+        src="HappinessBarChart16.html?file=cityhappiness.csv&p=Pollution&s=Happiness&c=Happiness&t=Bar Chart 1">
+    </iframe>
+    
+    <iframe id="inlineFrameExample"
+        title="Inline Frame Example"
+        width="49%"
+        height="500"
+        frameborder="2"
+        src="HappinessBarChart16.html?file=cityhappiness.csv&p=Sunshine&s=Happiness&t= Bar Chart 2">
+    </iframe>
+    
+    <br>
+    </div>
+  </div>
+</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+<script>
+    $('body').scrollspy({
+  target: '.bs-docs-sidebar',
+  offset: 40
+});
+</script>
+  </body>
+
+</html>
