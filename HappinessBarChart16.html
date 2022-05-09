@@ -43,9 +43,9 @@
 	</head>
 	<body>
         <h3 id="title">BarChart</h3>
-            <label></label>
-            <input type="file" name="inputfile" accept=".csv"
-                value="" id="inputfile">
+        <label></label>
+		<input type="file" name="inputfile" accept=".csv"
+            value="" id="inputfile">
 		<label id="NameLabel" style="font-size: 0px"></label>
     <br><br>
         <label>Field to Plot:</label>
@@ -63,12 +63,14 @@
 			<p id="toolhdr"><strong>Label Heading</strong></p>
 			<p id="value"> </p>
 			<p id="value2"> </p>
+            <p id="value3"> </p>
 		</div>
 	    <script src="https://d3js.org/d3.v7.min.js"></script>
 	    <script type="text/javascript">
 
 //get the href parametersfile name to process, h,w
-        const DEBUG = 255;
+        //const DEBUG = 15; //255;
+		var DEBUG = 7;
         const params1 = Object.fromEntries(new URLSearchParams(location.search));
 		if ( DEBUG & 4) console.log(params1);
          const params={};
@@ -85,7 +87,9 @@
 		var inputSrt = params.s || "";
 		var inputClr = params.c || "";
 		var inputTitle = params.t || "";
-
+		
+		if (DEBUG) console.log(`debug ${DEBUG}  ${params.debug}`);
+		DEBUG = params.debug || DEBUG;
 
         if (!inputHgt) inputHgt = 0;
         if (!inputWdt) inputWdt = 0;
@@ -189,10 +193,40 @@
                     setplotfields(); //calls mainbody
 			} else {
 				document.getElementById("NameLabel")
-					.innerHTML = "Error reading file " + filename + " : " + xmlhttp.status;
+					.innerHTML = "Error reading file " + filename +
+						 " : " + xmlhttp.status + " " + xmlhttp.statusText;
 			}
 		}
 	
+		function loadservercsvasync(filename){
+			var result = null;
+			var xmlhttp = new XMLHttpRequest();
+			if (DEBUG & 255) console.log("in async");
+			document.getElementById("inputfile").style.display = 'none';
+			document.getElementById("NameLabel").innerHTML = filename;
+			xmlhttp.open('GET', filename, true);
+			xmlhttp.onload = function (e) {
+  				if (xmlhttp.readyState === 4) {
+					if (DEBUG & 255) console.log("in async " + xmlhttp.status);
+
+					if (xmlhttp.status == 200) {
+						result = xmlhttp.responseText;
+						db = d3.csvParse(result);
+						addLineNo();
+						setsortfields();
+						setplotfields(); //calls mainbody
+					} else {
+						console.error(xmlhttp.statusText);
+						document.getElementById("NameLabel").innerHTML = 
+							"Error reading file " + filename 
+							+ " : " + xmlhttp.status +" : " + xmlhttp.statusText;
+					}
+				}
+			}	
+			xmlhttp.send();
+
+		}
+
 		function loadusercsv(){
             document.getElementById("inputfile").value = "";
             document.getElementById('inputfile')
@@ -209,15 +243,20 @@
             });
 		};
         //if inputFileName passes in, use that as a server file, otherwise
-		// promt user for local file.
+		// promt user for local file
 		if (inputFileName.length <= 4) {
 			loadusercsv();
 		} else {
-			loadservercsv(inputFileName);
+			if (DEBUG & 128) {
+				loadservercsvasync(inputFileName);
+			} else {
+				loadservercsv(inputFileName);
+			}
 		}
+
 	function mainbody(datab,xaxisname,yaxisname){
 			//Width and height of plot, not including scales
-			var margin = {top: 5, right: 10, bottom: 70, left: 47};
+			var margin = {top: 20, right: 10, bottom: 90, left: 47};
 			var w = inputWdt;
             if (w <= 0) w = window.innerWidth;
             w = w - ( margin.left + margin.right) - 10;
@@ -257,9 +296,14 @@
                     if (srt.selectedIndex == 0) sortname = "Line"
                     if ( DEBUG & 2) console.log("sort " + value + "txt " + sortname);
 					if (colorname == "Line") {
-						colorname = sortname;
-						maxclrval = getMaxval(datab, colorname);
-						if(DEBUG & 8)console.log("set color " + colorname);
+						let tstclrval = getMaxval(datab, sortname);
+						if (tstclrval > 0) {
+							maxclrval = tstclrval;
+							colorname = sortname;
+							if(DEBUG & 8)console.log("set color " + colorname);
+						} else {
+							if(DEBUG & 8)console.log("can't set color " + colorname);
+						}
 					}
                     sortOrder = false;
                     sortBars();
@@ -354,14 +398,14 @@
                 .attr("class", chartName)
 				.attr("text-anchor", "left")
 				.attr("x", 0)
-				.attr("y", h + margin.bottom  - 5)
+				.attr("y", h + margin.bottom  - 25)
 				.style("font-size", "20px" )
 				.text();
 			var colorlabel = svg.append("text")
                 .attr("class", chartName)
 				.attr("text-anchor", "end")
 				.attr("x", w)
-				.attr("y", h + margin.bottom  - 5)
+				.attr("y", -7)
 				.style("font-size", "18px" )
 				.text("Color by: " + colorname);
 			// Add X axis label:
@@ -369,9 +413,16 @@
                 .attr("class", chartName)
 				.attr("text-anchor", "middle")
 				.attr("x", (w / 2))
-				.attr("y", h + margin.bottom  - 5)
+				.attr("y", h + margin.bottom  - 25)
 				.style("font-size", "18px" )
 				.text(xaxisname)
+            var xaxislabel2 = svg.append("text")
+                .attr("class", chartName)
+				.attr("text-anchor", "middle")
+				.attr("x", (w / 2))
+				.attr("y", h + margin.bottom  - 5)
+				.style("font-size", "18px" )
+				.text(" ")
 
 			// Y axis label:
 			var yaxislabel = svg.append("text")
@@ -405,7 +456,7 @@
 			   .attr("width", xScale.bandwidth())
 			   .attr("height", function(d) {  return h - myScale(d[yaxisname]); })
 			   .attr("val", function(d) { 
-				   return d[xaxisname] + " : " + yaxisname + " = " + d[yaxisname] })
+                     return yaxisname + ": " + d[yaxisname] })
 				.attr("val2", function(d) { return "Line"})
 			   .attr("fill", function(d) {
                     var val = 0.0;
@@ -417,20 +468,17 @@
 				   let xPosition = parseInt(d3.select(this).attr("x")) + xScale.bandwidth() +180;
 				   xPosition = xPosition - (w + margin.right + margin.left);
 				   if (xPosition < 0) xPosition = 0;
-				   if (DEBUG & 32) console.log(`x ${event.pageX} y ${event.pageY}`);					
-				   if (DEBUG & 32) console.log(`xp ${xPosition}`);					
+				   //if (DEBUG & 32) console.log(`x ${event.pageX} y ${event.pageY}`);					
+				   //if (DEBUG & 32) console.log(`xp ${xPosition}`);					
 				   xPosition = event.pageX - xPosition;
 				   d3.select("#tooltip")
 					.style("left", xPosition + "px")
 					.style("top",  event.pageY + "px")	
 
-					document.getElementById("value").innerHTML = d3.select(this).attr("val")
-					document.getElementById("toolhdr").innerHTML = "Color: " + colorname;
-
-					//document.getElementById("value2").innerHTML = d3.select(this).attr("val2")
-                    document.getElementById("value2").innerHTML = sortname + " = " + d[sortname];
-					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);
+                   document.getElementById("toolhdr").innerHTML = "<strong>" + d[xaxisname] +"</strong>";
+                   document.getElementById("value").innerHTML = d3.select(this).attr("val")
+                   //document.getElementById("value2").innerHTML = sortname + " = " + d[sortname];
+                   document.getElementById("value3").innerHTML = colorname +": " + d[colorname];					d3.select("#tooltip").classed("hidden", false);
 
 			   })
 			   .on("mouseout", function() {
@@ -449,22 +497,26 @@
 			
 			//Define sort function
 			function sortBars() {
-                if ( DEBUG & 1) console.log("sorting " + chartName + " Field= " + sortname);
 				//Flip value of sortOrder
-			   	sortOrder = !sortOrder;
+				sortOrder = !sortOrder;
+				let sname = sortOrder? sortname : yaxisname;
+                if ( DEBUG & 1) console.log("sorting " + chartName + " Field= " + sname);
 				//sort numeric if 1st char is numeric
-				var sortNumeric = !isNaN(String(datab[0][sortname])[0]);
-				if(DEBUG & 8) console.log("Sort check " + datab[0][sortname][0] +" Numeric=" + sortNumeric);
+				var sortNumeric = !isNaN(String(datab[0][sname])[0]);
+				if(DEBUG & 8) console.log("Sort check " + datab[0][sname][0] +" Numeric=" + sortNumeric);
                 svg.selectAll(chartClass + " rect")
                     .sort(function(a, b) {
-                        if (sortOrder){
-						  if (sortNumeric) {
-                           return d3.ascending(parseFloat(a[sortname]), parseFloat(b[sortname]));
-						  } else {return d3.ascending(a[sortname], b[sortname]);}
-                        } else {
-							return d3.ascending(a[yaxisname], b[yaxisname]); 
-                        }
-                            //nat order return d3.ascending(a.Line, b.Line); 
+						if (sortNumeric) {
+							let xr = d3.ascending( parseFloat(a[sname]), parseFloat(b[sname]));
+							if (isNaN(xr) ){
+			if (DEBUG & 8) console.log(`s = ${xr} ${parseFloat(a[sname])} ${parseFloat(b[sname])}`);
+								if (isNaN(parseFloat(b[sname]))) {
+									return !isNaN(parseFloat(a[sname]));
+								} else { return -1;};
+							} else {
+								return xr;
+							}
+						} else {return d3.ascending(a[sname], b[sname]);}
                     })
                     .transition()
                     .delay(function(d, i) {return i * 50; })
@@ -476,16 +528,22 @@
 
 				svg.select(".xaxis").call(xAxisGenerator);
 				colorlabel.text(function(d) {return "Color by: " + colorname});
-                xaxislabel.text(function(d) { 
+                xaxislabel
+					.text(function(d) { 
+						   return (xaxisname);
+                	});
+                xaxislabel2
+					.text(function(d) { 
                        if( sortOrder){ 
-                           return (xaxisname + "      Sorted by: " + sortname );
+                           return ("Sorted by: " + sortname);
                        } else  { 
-						   return (xaxisname + "      Sorted by: " + yaxisname);
+						   return ("Sorted by: " + yaxisname);
 					   }
-                });
+                	});
+
 				// reset sort button
 				let srtbut = document.getElementById("sortbutton");
-				srtbut.innerHTML = sortOrder ? " UnSort " : "  Sort  ";
+				srtbut.innerHTML = sortOrder ? " Click to Order by " + yaxisname : " Click to Order by " + sortname;
 				srtbut.style.display = "inline";
 
 			};			
@@ -503,17 +561,16 @@
 					.attr("fill", function(d) {
                     	var val = 0.0;
                     	if ( !isNaN(d[colorname]))  val = d[colorname]/ maxclrval;
-						console.log("clr " + colorname + " v " + d[colorname] + "val " + val);
                     	return d3.interpolateInferno(val);
 			   		})
 					.attr("val", function(d) { 
 				   		return d[xaxisname] + " : " + yaxisname + " = " + d[yaxisname] })
 					.attr("val2", function(d) { return "Line"});
 				
-				yaxis.transition().duration(1500)
+				yaxis.transition().duration(6000)
 					.call(yAxisGenerator);
 					
-				yaxislabel.text(function(d) { return  yaxisname;});
+				yaxislabel.text(function(d) { return  yaxisname ;});
 			};			
 
 	};
