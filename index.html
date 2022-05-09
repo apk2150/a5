@@ -23,29 +23,29 @@
 <body>
 
    <div class="row">
-    <div class="col-1">
+    <!-- <div class="col-1"> -->
         <nav class="col-xs-3 bs-docs-sidebar">
         <ul id="sidebar" class="nav nav-stacked fixed">
             <li>
-                <a href="#div_template">Sunburst</a>
+                <a href="#div_template">Region</a>
             </li> <br>
             <li>
-                <a href="#bubblechartheader">Bubble Chart</a>
+                <a href="#bubblechartheader">Country Factors</a>
             </li><br>
             <li>
-                <a href="#line">Line Chart</a>
+                <a href="#line">Countries</a>
             </li><br>
             <li>
-                <a href="#bar">Bar Chart</a>
+                <a href="#bar">Cities</a>
             </li>
         </ul>
     </nav>
       
-    </div>
+    <!-- </div> -->
     <div class="col">
         
-        <h1> World Happieness Report</h1>
-        <h3> Emily Rooney, Alison Keenan, Namratha Prithviraj, and Saahiti Jasti </h3>
+        <h1> World Happiness Report</h1>
+        <h3 id="names"> Emily Rooney, Alison Keenan, Namratha Prithviraj, and Saahiti Jasti </h3>
       <!-- Sunburst chart -->   
     <div id="div_template"></div>
 
@@ -98,12 +98,14 @@
             <div id="bubblebarlegend"></div>
 
         </div>
+        
     </div>
 
-
+   
         <div id="line">
-            <div class="info">
-                Compare multiple countires happieness levels throught the years
+            <div class="divider"></div>
+            <div id="linechartheader" class="info">
+                <h2>Compare multiple countries happiness levels throughout the years</h2>
             </div>
     <iframe width="100%" height="706" frameborder="0"
   src="https://observablehq.com/embed/c3a12e49084c174f?cells=chart2%2Cviewof+filteredAttr%2Cviewof+toggle"></iframe>

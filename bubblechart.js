@@ -71,10 +71,11 @@ d3.csv('countriesdata.csv', function(data){
         .attr("class", "bubbleTooltip")
         .style("background-color", "#E9D6F4")
         .style("width", "160px")
-        .style("height", "120px")
+        .style("height", "150px")
         .style("padding", "10px")
         .style("border-radius", "10px")
         .style("border", "5px solid #E4C9F4")
+		.style("text-align", "left")
         .style("opacity", 0);
 
 	var highlight = function(d){
@@ -84,8 +85,8 @@ d3.csv('countriesdata.csv', function(data){
 		.style("stroke", "black")
         .style("opacity", 1);
 
-        var html  = "<div style='font-size:17px; margin-bottom:-10px;'><b>" + d["countryName"] + "</b> </div>" + "<br>" + 
-			"<div style='font-size:15px;'> <b>Happiness Score:</b> " + formatValue(d["lifeLadder"]) 
+        var html  = "<div style='font-size:14px; margin-bottom:-15px;'><b>" + d["countryName"] + "</b> </div>" + "<br>" + 
+			"<div style='font-size:12px;'> <b>Happiness Score:</b> " + formatValue(d["lifeLadder"]) 
             + "<br>" + "<b>GDP:</b> " + formatValue(d["logGDPPerCapita"]) + "<br>" + 
 			"<b>Life Expectancy:</b> " + formatValue(d["healthyLifeExpectancyAtBirth"]) + "<br>" +
 			"<b>Social Support:</b> " + formatValue(d["socialSupport"]) + "<br>" +
