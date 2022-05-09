@@ -1,7 +1,9 @@
 body {
-    background-color: #ffffe0;
     font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+    background: linear-gradient(#ffffe0, #FCD3AB);
     text-align: center; 
+    overflow: scroll;
+
 }
 
 h1 {
@@ -253,4 +255,13 @@ ul{
     width: 100%;
     height:20px;
     display: block;
+}
+
+#sun {
+        position: absolute;
+        top:400px;
+        right:150px;
+        width:50px;
+        width: 150px;
+        height: 150px;
 }

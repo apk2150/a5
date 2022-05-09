@@ -70,6 +70,7 @@ d3.csv('countriesdata.csv', function(data){
         .style("position", "absolute")
         .attr("class", "bubbleTooltip")
         .style("background-color", "#E9D6F4")
+		.style("display", "none")
         .style("width", "160px")
         .style("height", "150px")
         .style("padding", "10px")
@@ -100,6 +101,7 @@ d3.csv('countriesdata.csv', function(data){
             .transition()
             .duration(200) // ms
             .style("opacity", .9) // started as 0!
+			.style("display", "block")
 	    
 	};
 
