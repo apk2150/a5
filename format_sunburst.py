@@ -15,7 +15,9 @@ def csv_to_json(csvFilePath, jsonFilePath):
                 region_cnt[row["Region"]] = 0
             region_cnt[row["Region"]] += 1
 
-    num_regions = len(region_cnt)   
+    num_regions = len(region_cnt)  
+
+    # print("region cnt", num_regions) 
 	
     with open(csvFilePath, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf)
@@ -28,8 +30,6 @@ def csv_to_json(csvFilePath, jsonFilePath):
                 score_dict[row["Region"]] += float(row["Happiness Score"])
     
     for k,v in score_dict.items():
-        print(v)
-        print("len", len(region_dict[k]))
         score_dict[k] = v/len(region_dict[k])
 
 
@@ -38,7 +38,9 @@ def csv_to_json(csvFilePath, jsonFilePath):
         for c in region_dict[region]:
             r["children"].append({"id":c[0], "score":c[1], "size":1})
         data["children"].append(r)
-                
+
+
+    data["children"].sort(key = lambda i: i['score'])       
 
     with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
         jsonString = json.dumps(data, indent=4)
