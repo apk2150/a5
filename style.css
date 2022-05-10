@@ -265,3 +265,8 @@ ul{
         width: 150px;
         height: 150px;
 }
+
+.iframe-container {
+		text-align:center;
+  		width:100%;
+  }
